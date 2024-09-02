@@ -1,22 +1,9 @@
-package main
+package palindrome
 
 import (
 	"fmt"
 	"strings"
-	"testing"
 )
-
-func main() {
-	arr := []TestCase{{Input: "ana", Expected: true}, {Input: "PeS%rro", Expected: false}, {Input: "anita lava la tina", Expected: true}}
-	for i, tc := range arr {
-		result := IsPalindrome(tc.Input)
-		if result != tc.Expected {
-			fmt.Printf("Case: %d, failed: Input: %s, Expected: %t, Got %t\n", i+1, tc.Input, tc.Expected, result)
-		} else {
-			fmt.Printf("Case: %d, passed: Input: %s\n", i+1, tc.Input)
-		}
-	}
-}
 
 type TestCase struct {
 	Input    string
@@ -48,17 +35,14 @@ func IsPalindrome(s string) bool {
 	return true
 }
 
-func TestIsPalindrome(t *testing.T) {
-	testCases := []TestCase{
-		{"", true},
-		{"a", true}, {"anita lava la tina", true}, {"Hola mundo", false},
-	}
-	for _, tc := range testCases {
-		t.Run(tc.Input, func(t *testing.T) {
-			result := IsPalindrome(tc.Input)
-			if result != tc.Expected {
-				t.Errorf("Expected %t, but got %t for Input: %s", tc.Expected, result, tc.Input)
-			}
-		})
+func Init() {
+	arr := []TestCase{{Input: "ana", Expected: true}, {Input: "PeS%rro", Expected: false}, {Input: "anita lava la tina", Expected: true}}
+	for i, tc := range arr {
+		result := IsPalindrome(tc.Input)
+		if result != tc.Expected {
+			fmt.Printf("Case: %d, failed: Input: %s, Expected: %t, Got %t\n", i+1, tc.Input, tc.Expected, result)
+		} else {
+			fmt.Printf("Case: %d, passed: Input: %s\n", i+1, tc.Input)
+		}
 	}
 }
